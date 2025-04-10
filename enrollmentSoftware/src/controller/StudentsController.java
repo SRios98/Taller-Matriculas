@@ -12,13 +12,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Student;
 
 public class StudentsController {
-    @FXML private TextField idField;
-    @FXML private TextField nameField;
-    @FXML private TextField emailField;
-    @FXML private TableView<Student> studentTable;
-    @FXML private TableColumn<Student, String> idColumn;
-    @FXML private TableColumn<Student, String> nameColumn;
-    @FXML private TableColumn<Student, String> emailColumn;
+	@FXML
+	private TextField idField;
+	@FXML
+	private TextField nameField;
+	@FXML
+	private TextField emailField;
+	@FXML
+	private TableView<Student> studentTable;
+	@FXML
+	private TableColumn<Student, String> idColumn;
+	@FXML
+	private TableColumn<Student, String> nameColumn;
+	@FXML
+	private TableColumn<Student, String> emailColumn;
     
     private Connection connection = DBConnection.getInstance().getConnection();
     private StudentDAO studentDAO = new StudentDAO(connection);
@@ -26,6 +33,8 @@ public class StudentsController {
     
     @FXML
     public void initialize() {
+    	
+    	
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
