@@ -3,11 +3,11 @@ package application;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
-	private static BorderPane rootLayout;
+	private static AnchorPane rootLayout;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -26,7 +26,7 @@ public class Main extends Application {
 	public static void loadView(String fxmlFile) {
 		try {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
-		rootLayout.setCenter(loader.load());
+		rootLayout.setCenterShape(loader.load());
 		} catch (Exception e) {
 		e.printStackTrace();
 		}

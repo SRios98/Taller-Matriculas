@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.CoursesController"
+            prefHeight="475.0" prefWidth="662.0"
+            style="-fx-background-color: linear-gradient(to bottom, #2196F3, #0D47A1); -fx-font-family: 'Segoe UI';">
+    <children>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+        <!-- Título centrado arriba -->
+        <Label text="Courses"
+               layoutX="0.0" layoutY="20.0"
+               prefWidth="662.0"
+               alignment="CENTER"
+               style="-fx-font-size: 32px; -fx-text-fill: white; -fx-font-weight: bold;" />
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CoursesController">
-   <center>
-      <VBox alignment="CENTER" prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Courses' Module" />
-         </children>
-      </VBox>
-   </center>
-</BorderPane>
+        <VBox alignment="CENTER" spacing="15" layoutX="65.0" layoutY="69.0" prefHeight="337.0" prefWidth="532.0"
+              style="-fx-background-color: white; -fx-padding: 30px; -fx-background-radius: 16px;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 4);"
+              AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="69.0" AnchorPane.bottomAnchor="69.0">
+            <children>
+                <TextField fx:id="codeField" promptText="Código del curso" />
+                <TextField fx:id="nameField" promptText="Nombre del curso" />
+                <TextField fx:id="creditsField" promptText="Créditos" />
+                <TableView fx:id="courseTable" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="codeColumn" text="Código" />
+                        <TableColumn fx:id="nameColumn" text="Nombre" />
+                        <TableColumn fx:id="creditsColumn" text="Créditos" />
+                    </columns>
+                </TableView>
+                <HBox spacing="10">
+                    <children>
+                        <Button text="Guardar" onAction="#handleSaveCourse"/>
+                        <Button text="Actualizar" onAction="#handleUpdateCourse"/>
+                        <Button text="Eliminar" onAction="#handleDeleteCourse"/>
+                        <Button text="Limpiar" onAction="#clearFields"/>
+                        <Button text="Volver" onAction="#goBack"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

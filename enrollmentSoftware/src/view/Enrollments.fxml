@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.EnrollmentsController"
+            prefHeight="475.0" prefWidth="662.0"
+            style="-fx-background-color: linear-gradient(to bottom, #2196F3, #0D47A1); -fx-font-family: 'Segoe UI';">
+    <children>
+        <!-- TÍTULO CENTRADO -->
+        <Label text="Enrollments"
+               layoutX="0.0" layoutY="20.0"
+               prefWidth="662.0"
+               alignment="CENTER"
+               textFill="white"
+               style="-fx-font-size: 28px; -fx-font-weight: bold;" />
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EnrollmentsController">
-   <center>
-      <VBox alignment="CENTER" prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Enrollments' module" />
-         </children>
-      </VBox>
-   </center>
-</BorderPane>
+        <!-- CONTENEDOR PRINCIPAL -->
+        <VBox alignment="CENTER" spacing="15" layoutX="65.0" layoutY="69.0" prefHeight="337.0" prefWidth="532.0"
+              style="-fx-background-color: white; -fx-padding: 30px; -fx-background-radius: 16px;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 4);"
+              AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="69.0" AnchorPane.bottomAnchor="69.0">
+            <children>
+                <HBox spacing="15">
+                    <ComboBox fx:id="studentComboBox" promptText="ID del estudiante" prefWidth="200"/>
+                    <ComboBox fx:id="courseComboBox" promptText="Código del curso" prefWidth="200"/>
+                </HBox>
+                <DatePicker fx:id="enrollmentDatePicker" promptText="Fecha de inscripción" />
+                <TableView fx:id="enrollmentTable" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="studentIdColumn" text="Estudiante" />
+                        <TableColumn fx:id="courseCodeColumn" text="Curso" />
+                        <TableColumn fx:id="dateColumn" text="Fecha" />
+                    </columns>
+                </TableView>
+                <HBox spacing="10">
+                    <children>
+                        <Button text="Guardar" onAction="#handleSaveEnrollment"/>
+                        <Button text="Actualizar" onAction="#handleUpdateEnrollment"/>
+                        <Button text="Eliminar" onAction="#handleDeleteEnrollment"/>
+                        <Button text="Limpiar" onAction="#clearFields"/>
+                        <Button text="Volver" onAction="#goBack"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

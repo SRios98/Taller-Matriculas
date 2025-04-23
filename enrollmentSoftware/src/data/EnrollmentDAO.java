@@ -38,28 +38,27 @@ public class EnrollmentDAO {
 
 
 	public ArrayList<Enrollment> fetch() {
-        ArrayList<Enrollment> enrollments = new ArrayList<>();
-        String query = "SELECT Stundet_id, Course_code, Enrollment_date FROM Book";
-        
-        try (Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-            
-            while (rs.next()) {
-                String student_id = rs.getString("Stundet_id");
-                String course_code = rs.getString("Course_code");
-                LocalDate enrollment_date = rs.getDate("Enrollment_date").toLocalDate();
+	    ArrayList<Enrollment> enrollments = new ArrayList<>();
+	    String query = "SELECT Student_id, Course_code, Enrollment_date FROM Enrollment";
 
-;
-                
-		Enrollment enrollment = new Enrollment(student_id, course_code, enrollment_date);
-			enrollments.add(enrollment);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+	    try (Statement stmt = connection.createStatement();
+	         ResultSet rs = stmt.executeQuery(query)) {
 
-        return enrollments;
+	        while (rs.next()) {
+	            String student_id = rs.getString("Student_id");
+	            String course_code = rs.getString("Course_code");
+	            LocalDate enrollment_date = rs.getDate("Enrollment_date").toLocalDate();
+
+	            Enrollment enrollment = new Enrollment(student_id, course_code, enrollment_date);
+	            enrollments.add(enrollment);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return enrollments;
 	}
+
 
 
 	public void update(Enrollment enrollment) {
