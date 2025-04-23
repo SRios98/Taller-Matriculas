@@ -7,7 +7,6 @@
             prefHeight="475.0" prefWidth="662.0"
             style="-fx-background-color: linear-gradient(to bottom, #2196F3, #0D47A1); -fx-font-family: 'Segoe UI';">
     <children>
-        <!-- TÍTULO CENTRADO -->
         <Label text="Enrollments"
                layoutX="0.0" layoutY="20.0"
                prefWidth="662.0"
@@ -15,7 +14,6 @@
                textFill="white"
                style="-fx-font-size: 28px; -fx-font-weight: bold;" />
 
-        <!-- CONTENEDOR PRINCIPAL -->
         <VBox alignment="CENTER" spacing="15" layoutX="65.0" layoutY="69.0" prefHeight="337.0" prefWidth="532.0"
               style="-fx-background-color: white; -fx-padding: 30px; -fx-background-radius: 16px;
                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 4);"

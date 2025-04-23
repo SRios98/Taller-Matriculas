@@ -2,6 +2,7 @@ package controller;
 
 import java.sql.Connection;
 
+import application.Main;
 import data.DBConnection;
 import data.StudentDAO;
 import javafx.collections.FXCollections;
@@ -20,7 +21,7 @@ public class StudentsController {
     @FXML private TextField emailField;
 
     @FXML private TableView<Student> studentTable;
-    @FXML private TableColumn<Student, String> idColumn;
+    @FXML private TableColumn<Student, String> idCol;
     @FXML private TableColumn<Student, String> nameColumn;
     @FXML private TableColumn<Student, String> emailColumn;
 
@@ -29,7 +30,7 @@ public class StudentsController {
 
     @FXML
     public void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
 
@@ -51,31 +52,34 @@ public class StudentsController {
     }
 
     @FXML
-    private void saveStudent() {
-        Student student = new Student(
-                idField.getText(),
-                nameField.getText(),
-                emailField.getText()
-        );
+    private void handleSaveStudent() {
+        String id = idField.getText().trim();
+        String name = nameField.getText().trim();
+        String email = emailField.getText().trim();
+
+        if (!validateFields(id, name, email)) return;
+
+        Student student = new Student(id, name, email);
 
         if (!studentDAO.authenticate(student.getId())) {
             studentDAO.save(student);
             showAlert("Student saved successfully!");
+            loadStudents();
+            clearFields();
         } else {
             showAlert("A student with this ID already exists.");
         }
-
-        loadStudents();
-        clearFields();
     }
 
     @FXML
-    private void updateStudent() {
-        Student student = new Student(
-                idField.getText(),
-                nameField.getText(),
-                emailField.getText()
-        );
+    private void handleUpdateStudent() {
+        String id = idField.getText().trim();
+        String name = nameField.getText().trim();
+        String email = emailField.getText().trim();
+
+        if (!validateFields(id, name, email)) return;
+
+        Student student = new Student(id, name, email);
         studentDAO.update(student);
         showAlert("Student updated.");
         loadStudents();
@@ -83,7 +87,7 @@ public class StudentsController {
     }
 
     @FXML
-    private void deleteStudent() {
+    private void handleDeleteCourse() {
         String id = idField.getText();
         studentDAO.delete(id);
         showAlert("Student deleted.");
@@ -91,15 +95,45 @@ public class StudentsController {
         clearFields();
     }
 
+    @FXML
     private void clearFields() {
         idField.clear();
         nameField.clear();
         emailField.clear();
     }
 
+    @FXML
+    private void goBack() {
+        Main.loadView("/view/MainMenu.fxml");
+    }
+
+    private boolean validateFields(String id, String name, String email) {
+        if (id.isEmpty() || name.isEmpty() || email.isEmpty()) {
+            showAlert("All fields must be filled.");
+            return false;
+        }
+
+        if (!id.matches("^[A-Za-z][0-9]{3}$")) {
+            showAlert("ID must start with a letter followed by 3 digits (e.g., A123).");
+            return false;
+        }
+
+        if (!name.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$")) {
+            showAlert("Name must only contain letters and spaces.");
+            return false;
+        }
+
+        if (!email.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$")) {
+            showAlert("Enter a valid email address.");
+            return false;
+        }
+
+        return true;
+    }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Info");
+        alert.setTitle("Información");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

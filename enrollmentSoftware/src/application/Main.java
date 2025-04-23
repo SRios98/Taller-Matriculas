@@ -16,6 +16,7 @@ public class Main extends Application {
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
+			scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 			primaryStage.setTitle("Enrollment Software");
 			primaryStage.show();
 		} catch (Exception e) {
@@ -25,12 +26,14 @@ public class Main extends Application {
 	
 	public static void loadView(String fxmlFile) {
 		try {
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
-		rootLayout.setCenterShape(loader.load());
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
+			AnchorPane newView = loader.load();
+			rootLayout.getChildren().setAll(newView); 
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
-		}
+	}
+
 
 
 	public static void main(String[] args) {

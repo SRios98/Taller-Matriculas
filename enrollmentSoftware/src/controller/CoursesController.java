@@ -35,7 +35,6 @@ public class CoursesController {
         creditsColumn.setCellValueFactory(new PropertyValueFactory<>("credits"));
         loadCourses();
 
-        // Listener para seleccionar fila de la tabla
         courseTable.setOnMouseClicked((MouseEvent event) -> {
             if (courseTable.getSelectionModel().getSelectedItem() != null) {
                 Course selected = courseTable.getSelectionModel().getSelectedItem();
