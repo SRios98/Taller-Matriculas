@@ -16,7 +16,6 @@ public class Main extends Application {
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
-			scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 			primaryStage.setTitle("Enrollment Software");
 			primaryStage.show();
 		} catch (Exception e) {

@@ -85,7 +85,7 @@ public class CoursesController {
         try {
             int credits = Integer.parseInt(creditsText);
 
-            if (!courseDAO.exists(code)) {
+            if (!courseDAO.authenticate(code)) {
                 showAlert("Error", "This course does not exist.");
                 return;
             }
@@ -107,7 +107,7 @@ public class CoursesController {
             return;
         }
 
-        if (!courseDAO.exists(code)) {
+        if (!courseDAO.authenticate(code)) {
             showAlert("Error", "The course does not exist.");
             return;
         }

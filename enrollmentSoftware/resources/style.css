@@ -38,7 +38,7 @@
     -fx-background-radius: 8;
     -fx-cursor: hand;
     -fx-pref-width: 180px;
-    -fx-pref-height: 50px;
+    -fx-pref-height: 70px;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
     -fx-transition: all 0.3s ease-in-out;
 }
