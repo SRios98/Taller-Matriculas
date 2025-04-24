@@ -17,23 +17,23 @@
                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 4);"
               AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="69.0" AnchorPane.bottomAnchor="69.0">
             <children>
-                <TextField fx:id="codeField" promptText="Código del curso" />
-                <TextField fx:id="nameField" promptText="Nombre del curso" />
-                <TextField fx:id="creditsField" promptText="Créditos" />
+                <TextField fx:id="codeField" promptText="Course Code" />
+                <TextField fx:id="nameField" promptText="Course Name" />
+                <TextField fx:id="creditsField" promptText="Credits" />
                 <TableView fx:id="courseTable" prefHeight="150">
                     <columns>
-                        <TableColumn fx:id="codeColumn" text="Código" />
-                        <TableColumn fx:id="nameColumn" text="Nombre" />
-                        <TableColumn fx:id="creditsColumn" text="Créditos" />
+                        <TableColumn fx:id="codeColumn" text="Code" />
+                        <TableColumn fx:id="nameColumn" text="Name" />
+                        <TableColumn fx:id="creditsColumn" text="Credits" />
                     </columns>
                 </TableView>
                 <HBox spacing="10">
                     <children>
-                        <Button text="Guardar" onAction="#handleSaveCourse"/>
-                        <Button text="Actualizar" onAction="#handleUpdateCourse"/>
-                        <Button text="Eliminar" onAction="#handleDeleteCourse"/>
-                        <Button text="Limpiar" onAction="#clearFields"/>
-                        <Button text="Volver" onAction="#goBack"/>
+                        <Button text="Save" onAction="#handleSaveCourse"/>
+                        <Button text="Update" onAction="#handleUpdateCourse"/>
+                        <Button text="Delete" onAction="#handleDeleteCourse"/>
+                        <Button text="Clear" onAction="#clearFields"/>
+                        <Button text="Back" onAction="#goBack"/>
                     </children>
                 </HBox>
             </children>

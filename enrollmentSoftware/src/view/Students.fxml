@@ -16,26 +16,27 @@
 
         <VBox alignment="CENTER" layoutX="65.0" layoutY="69.0" prefHeight="337.0" prefWidth="532.0" spacing="15.0" style="-fx-background-color: white; -fx-padding: 30px; -fx-background-radius: 16px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.3, 0, 4);" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="69.0">
             <children>
-                <TextField fx:id="idField" promptText="ID del estudiante" />
-                <TextField fx:id="nameField" promptText="Nombre completo" />
-                <TextField fx:id="emailField" promptText="Correo electrónico" />
+                <TextField fx:id="idField" promptText="Student ID" />
+                <TextField fx:id="nameField" promptText="Full Name" />
+                <TextField fx:id="emailField" promptText="Email Address" />
                 <TableView fx:id="studentTable" prefHeight="150">
                     <columns>
                         <TableColumn fx:id="idCol" text="ID" />
-                        <TableColumn fx:id="nameColumn" text="Nombre" />
-                        <TableColumn fx:id="emailColumn" text="Correo" />
+                        <TableColumn fx:id="nameColumn" text="Name" />
+                        <TableColumn fx:id="emailColumn" text="Email" />
                     </columns>
                 </TableView>
                 <HBox spacing="10">
                     <children>
-                        <Button onAction="#handleSaveStudent" text="Guardar" />
-                        <Button onAction="#handleUpdateStudent" text="Actualizar" />
-                        <Button onAction="#handleDeleteCourse" text="Eliminar" />
-                        <Button onAction="#clearFields" text="Limpiar" />
-                        <Button onAction="#goBack" text="Volver" />
+                        <Button onAction="#handleSaveStudent" text="Save" />
+                        <Button onAction="#handleUpdateStudent" text="Update" />
+                        <Button onAction="#handleDeleteCourse" text="Delete" />
+                        <Button onAction="#clearFields" text="Clear" />
+                        <Button onAction="#goBack" text="Back" />
                     </children>
                 </HBox>
             </children>
         </VBox>
     </children>
 </AnchorPane>
+

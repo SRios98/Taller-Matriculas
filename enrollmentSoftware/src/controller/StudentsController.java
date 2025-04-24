@@ -89,6 +89,11 @@ public class StudentsController {
     @FXML
     private void handleDeleteCourse() {
         String id = idField.getText();
+        if (id.isEmpty()) {
+            showAlert("Please select a student to delete.");
+            return;
+        }
+
         studentDAO.delete(id);
         showAlert("Student deleted.");
         loadStudents();
@@ -100,6 +105,7 @@ public class StudentsController {
         idField.clear();
         nameField.clear();
         emailField.clear();
+        studentTable.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -118,8 +124,8 @@ public class StudentsController {
             return false;
         }
 
-        if (!name.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$")) {
-            showAlert("Name must only contain letters and spaces.");
+        if (!name.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(\\s+[A-Za-zÁÉÍÓÚáéíóúÑñ]+)+$")) {
+            showAlert("Name must include at least a first name and a last name (letters and spaces only).");
             return false;
         }
 
@@ -133,10 +139,11 @@ public class StudentsController {
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Información");
+        alert.setTitle("Information");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 }
+
 
